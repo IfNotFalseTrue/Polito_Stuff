@@ -1,10 +1,11 @@
 /*
 Alcune funzioni utili su come trattare le stringhe:
-
-1) Contare il numero di parole
-2) Verificare o meno se la parola è palindroma ( si adatta facilmente ad un vettore)
-3) Invertire la stringa
-4) Rimuovere il '\n' finale lasciato da fgets
+( Si adattano facilmente ad un vettore)
+ 
+ 
+1) Verificare o meno se la parola è palindroma
+2) Invertire la stringa
+3) Rimuovere il '\n' finale lasciato da fgets
 */
 
 #include <stdio.h>
@@ -13,31 +14,6 @@ Alcune funzioni utili su come trattare le stringhe:
 #define MAX_SIZE 128
 #define FALSE 0
 #define TRUE 1
-
-
-/*
-Nel caso in cui si vogliano considerare gli spazi come separatore,
-usare isspace definita in ctype.h
-*/ 
-static unsigned int count_words(char *s, size_t len, char separator)
-{
-    size_t i = 0;
-    unsigned int words_count = 0;
-    char in_word = FALSE;
-    
-    for(i = 0; i < len; ++i) {
-        if(s[i] == separator) {
-            in_word = FALSE;
-        }
-        else if(in_word == FALSE) {
-            in_word = TRUE;
-            ++words_count;
-        }
-    }
-
-    return words_count;
-}
-
 
 static void swap_ch(char *a, char *b)
 {
@@ -50,13 +26,13 @@ static void swap_ch(char *a, char *b)
 static int is_palindrome(const char *s, size_t len)
 {
     size_t i = 0;
-    int pal = 0;
+    int pal = FALSE;
 
     len -= 1;
 
     for(i = 0; i < len/2 && !pal; ++i) {
         if(s[i] == s[len - i]) {
-            pal = 1;
+            pal = TRUE;
         }
     }
 
@@ -105,4 +81,5 @@ int main(void)
 
     return EXIT_SUCCESS;
 }
+
 
