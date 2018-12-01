@@ -19,7 +19,7 @@ vres
 
 #include <stdio.h>
 #include <stdlib.h>
-#define N 5lu
+#define N 5UL
 
 
 static void input_array(int *a, size_t dim)
