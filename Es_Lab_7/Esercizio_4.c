@@ -1,3 +1,15 @@
+/*
+Si scriva un programma C che
+a. nel main chieda all’utente di inserire N valori e li metta in un vettore vett,
+quindi chieda un ulteriore valore x
+b. passi sia il vettore sia x ad una funzione che moltiplichi ciascuno degli
+elementi del vettore per x e il cui prototipo sia
+void mult(int v[], int n, int x);
+Il main poi visualizzi il vettore dopo la moltiplicazione.
+Nota bene: la funzione riceve il vettore per riferimento e quindi può modificare i
+valori stessi del vettore. 
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #define N 5UL
