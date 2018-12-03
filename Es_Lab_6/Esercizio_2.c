@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #define TRUE 1
 #define FALSE 0
-#define N 5
+#define N 5UL
 
 
 static void xor_swap(int *a, int *b)
