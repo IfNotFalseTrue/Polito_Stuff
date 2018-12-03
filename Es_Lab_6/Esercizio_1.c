@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #define TRUE 1
 #define FALSE 0
-#define N 5
+#define N 5UL
 
 
 static char is_palindrome(const int *a, size_t len)
