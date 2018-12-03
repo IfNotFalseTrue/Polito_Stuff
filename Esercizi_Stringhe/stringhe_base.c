@@ -26,13 +26,13 @@ static void swap_ch(char *a, char *b)
 static int is_palindrome(const char *s, size_t len)
 {
     size_t i = 0;
-    int pal = FALSE;
+    int pal = TRUE;
 
     len -= 1;
 
-    for(i = 0; i < len/2 && !pal; ++i) {
-        if(s[i] == s[len - i]) {
-            pal = TRUE;
+    for(i = 0; i < len/2 && pal; ++i) {
+        if(s[i] != s[len - i]) {
+            pal = FALSE;
         }
     }
 
