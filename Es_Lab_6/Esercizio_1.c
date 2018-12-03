@@ -5,7 +5,7 @@
 #define N 5
 
 
-static char is_palindrome(int *a, size_t len)
+static char is_palindrome(const int *a, size_t len)
 {
     size_t i = 0;
     char palindrome = TRUE;
