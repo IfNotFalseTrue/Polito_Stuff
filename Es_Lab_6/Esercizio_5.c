@@ -5,6 +5,7 @@
 static int int_power(int base, int exponent)
 {
     int result = 1;
+    
     while(exponent != 0) {
         if((exponent & 1) != 0) {
             result *= base;
