@@ -30,8 +30,10 @@ static void count_occ(const unsigned int *v, size_t len)
                     found[j] = TRUE;
                 }
             }
-            printf("-%u %s da %u caratteri\n", 
-                    ct, (ct > 1) ? "parole" : "parola", v[i]);
+            if(v[i] != 0) {
+                printf("-%u %s da %u caratteri\n", 
+                        ct, (ct > 1) ? "parole" : "parola", v[i]);
+            }
         }
     }
 }
@@ -74,16 +76,18 @@ int main(void)
         }
     }
 
-    /*ACHTUNG: all'uscita del ciclo j vale il numero delle parole - 1 ( w_c - 1)*/
+    /*Achtung: all'uscita del ciclo j vale il numero delle parole - 1 ( w_c - 1)*/
     w_lengths[j] = single_len;
     ++j;
 
-    printf("La stringa inserita contiene %u %s\n", 
-            w_c, (w_c == 0 || w_c > 1) ? "parole" : "parola");
-
     if(w_c != 0) {
+        printf("La stringa inserita contiene %u %s\n", 
+            w_c, (w_c > 1) ? "parole" : "parola");
         printf("La lunghezza media delle parole e' %.1lf\n", tot_len_w / w_c);
         count_occ(w_lengths, j);
+    }
+    else {
+        printf("La stringa inserita contiene %u parole\n", w_c); 
     }
 
     return EXIT_SUCCESS;
