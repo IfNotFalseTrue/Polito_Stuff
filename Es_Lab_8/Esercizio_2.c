@@ -97,8 +97,8 @@ int main(void)
     puts(s);
     w_c = count_words(s, len, '_');
 
-    printf("Nella stringa ci sono %u %s\n",
-            w_c, (w_c == 0 || w_c > 1) ? "parole" : "parola");
-
+    printf("Numero di parole: %u\n", w_c);
+    
     return EXIT_SUCCESS;
 }
+
