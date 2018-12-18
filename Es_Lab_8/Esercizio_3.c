@@ -8,13 +8,18 @@
 #define SEPARATOR ':'
 #define PRINT_FORMAT "_minuti"
 
-static void input_string(char *s, int max_len)
+static void remove_new_line(char *s)
 {
-    fgets(s, max_len, stdin);
     char *p = strchr(s, '\n');
     if(p != NULL) {
         *p = '\0';
     }
+}
+
+static void input_string(char *s, int max_len)
+{
+    fgets(s, max_len, stdin);
+    remove_new_line(s);
 }
 
 static char parse_string(const char *s, char sep)
@@ -56,6 +61,7 @@ int main(void)
     char s1[MAX_S];
     char s2[MAX_S];
     char string_time_diff[MAX_S];
+    int diff_tot_time;
     int hours_s1, min_s1, tot_time_s1;
     int hours_s2, min_s2, tot_time_s2;
     char sep;
@@ -73,8 +79,8 @@ int main(void)
                 puts("Il primo orario e' precedente al secondo");
             }
             else {
-                int diff_tot_time = tot_time_s2 - tot_time_s1;
-                snprintf(string_time_diff, MAX_S, "%d%s", diff_tot_time, PRINT_FORMAT);
+                diff_tot_time = tot_time_s2 - tot_time_s1;
+                sprintf(string_time_diff, "%d%s", diff_tot_time, PRINT_FORMAT);
                 puts(string_time_diff);
             }
         }
@@ -86,4 +92,3 @@ int main(void)
 
     return EXIT_SUCCESS;
 }
-
