@@ -19,7 +19,6 @@ static int search_product
     return index;
 }
 
-
 int main(void)
 {
     char input[MAX_S];
@@ -28,11 +27,13 @@ int main(void)
     char my_product[MAX_S];
     int prod_index, i;
     unsigned int qtity = 0;
+    int error_sscanf = EOF;
 
     printf("Inserisci %d prodotti e prezzi separati da spazio:\n", N);
     for(i = 0; i < N; ++i) {
         gets(input);
-        if(sscanf(input, "%s %lf", products[i], &price[i]) != 2) {
+        error_sscanf = sscanf(input, "%s %lf", products[i], &price[i]);
+        if(error_sscanf != 2) {
             puts("Errore nell'input...");
             exit(EXIT_FAILURE);
         }
@@ -41,16 +42,19 @@ int main(void)
     do {
         puts("Inserisci il prodotto da cercare e la quantita':");
         gets(input);
-        sscanf(input, "%s %u", my_product, &qtity);
+        error_sscanf = sscanf(input, "%s %u", my_product, &qtity);
         prod_index = search_product(products, my_product, N);
-        if(prod_index == -1) {
+        if(error_sscanf != 2) {
+            puts("Errore nell'input...");
+        }
+        else if(prod_index == -1) {
             puts("Prodotto non trovato");
         }
         else {
             printf("Prezzo totale di %s: %.2lf\n", my_product, qtity * price[prod_index]);
         }
 
-    } while(prod_index == -1);
+    } while(prod_index == -1 || error_sscanf != 2);
 
     return EXIT_SUCCESS;
 }
